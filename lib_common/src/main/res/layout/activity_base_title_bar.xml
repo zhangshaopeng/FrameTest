@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/title_bar_view"
+        layout="@layout/view_title_bar" />
+
+    <FrameLayout
+        android:id="@+id/fl_child_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/title_bar_view"
+        android:orientation="vertical"/>
+
+    <FrameLayout
+        android:id="@+id/fl_tips_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/title_bar_view"/>
+
+
+</RelativeLayout>

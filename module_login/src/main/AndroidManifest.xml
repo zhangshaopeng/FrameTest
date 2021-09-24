@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.app.module_login">
+
+    <application>
+        <activity
+            android:name=".activity.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.ResultActivity" />
+        <activity android:name=".activity.OnActivityResultActivity" />
+    </application>
+
+</manifest>

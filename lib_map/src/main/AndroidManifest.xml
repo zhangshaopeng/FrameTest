@@ -1,0 +1,15 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.baidu.lib">
+
+    <application>
+        <!-- 配置你自己的app_id-->
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="com.baidu.lbsapi.API_ID" />
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote"></service>
+    </application>
+</manifest>

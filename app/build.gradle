@@ -1,0 +1,68 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    defaultConfig {
+        applicationId "com.dyne.app"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        archivesBaseName = "${applicationId}_${versionName}_${versionCode}"
+        multiDexEnabled true
+    }
+
+
+    lintOptions {
+        checkReleaseBuilds true
+        abortOnError false
+    }
+
+    signingConfigs {
+
+        release {
+            keyAlias key_alias
+            keyPassword key_password
+            storeFile file(store_file)
+            storePassword store_password
+        }
+    }
+    buildTypes {
+        release {
+            debuggable false
+            //Zipalign优化
+            zipAlignEnabled true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+}
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+        jcenter() { url 'http://jcenter.bintray.com/' }
+        maven { url "https://jitpack.io" }
+        maven { url 'https://maven.google.com' }
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+
+    }
+
+}
+dependencies {
+        if (isDevMode.toBoolean()) {
+            implementation project(':lib_common')
+        } else {
+            implementation project(':module_main')
+            implementation project(':module_login')
+        }
+
+    }

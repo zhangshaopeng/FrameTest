@@ -1,0 +1,36 @@
+
+2018.03.06
+
+module里是关于umeng的一些jar及so库，目前集成的功能有：分享及第三方登录。
+
+---使用方法：
+登录
+1，初始化：在程序入口调用 UMengManager.init();
+2，第三方登录：调用 ThirdLoginHelper.login();
+3，在activity里重写onActivityResult()方法并调用 ThirdLoginHelper.onActivityResult(getApplication(),requestCode,resultCode,data);
+具体api使用请查看umeng官方文档
+分享
+1，初始化：在程序入口调用 UMengManager.init();
+2，第三方分享：调用 ThirdShareHelper.share();
+3，在activity里重写onActivityResult()方法并调用 ThirdShareHelper.onActivityResult(getApplication(),requestCode,resultCode,data);
+4，在发起分享的activity的onDestroy()调用 ThirdShareHelper.destroy();
+
+
+注意onActivityResult不可在fragment中实现，如果在fragment中调用登录或分享，需要在fragment依赖的Activity中实现
+
+
+---常见异常：
+1，想每次获取用户资料都授权怎么办？
+https://at.umeng.com/i8Dy8n?cid=476
+
+2，为什么我每次获取用户资料都跳转两次授权界面？
+https://at.umeng.com/1HTzyC?cid=476
+
+3，新浪授权报错SSLSocket
+http://bbs.umeng.com/thread-28059-1-1.html
+
+4，微博登录后不执行回调/不走监听
+http://bbs.umeng.com/thread-25420-1-1.html
+
+5，为什么微信授权一直等待不能成功？
+http://bbs.umeng.com/thread-25781-1-1.html
